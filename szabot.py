@@ -236,6 +236,16 @@ class SZABot(commands.Bot):
 
     async def setup_hook(self) -> None:
         """Called on bot startup to sync slash commands."""
+        # Register all app commands on the command tree before syncing
+        self.tree.add_command(self.setup_command)
+        self.tree.add_command(self.help_command)
+        self.tree.add_command(self.bsn_balance)
+        self.tree.add_command(self.bsn_leaderboard)
+        self.tree.add_command(self.create_teams)
+        self.tree.add_command(self.trade_players)
+        self.tree.add_command(self.pause_game)
+        self.tree.add_command(self.resume_game)
+        self.tree.add_command(self.end_game)
         # Sync commands with all guilds
         await self.tree.sync()
 
