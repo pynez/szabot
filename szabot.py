@@ -231,8 +231,6 @@ class SZABot(commands.Bot):
         self.bsn_balances: Dict[int, int] = load_bsn_data(self.bsn_file)
         # Active game sessions keyed by guild ID
         self.active_games: Dict[int, GameSession] = {}
-        # Sync application commands on ready
-        self.tree = app_commands.CommandTree(self)
 
     async def setup_hook(self) -> None:
         """Called on bot startup to sync slash commands."""
